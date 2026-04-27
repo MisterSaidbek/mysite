@@ -1,8 +1,11 @@
+from timeit import default_timer
 from django.http import HttpResponse, HttpRequest
+from django.shortcuts import render
 
 
 def index(request: HttpRequest):
-    print(request.path)
-    print(request.headers)
-    print(request.META)
-    return HttpResponse("<h1>Hello, world.</h1>")
+    context = {
+        "time_run": default_timer(),
+    }
+
+    return render(request, "myresume/myresume-index.html", context=context)

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,28 @@
     </title>
 </head>
 <body>
+
       {% block body %}
+      <div>
+      <ul>
+        {% for name, price in products %}
+        <li> {{ name }} for {{ price }}</li>
+
+          {% empty %}
+          No products here
+        {% endfor %}
+
+      </ul>
+          </div>
       Base Body
       {% endblock %}
 
 <div>
   {% now 'H:i' %}
+</div>
+<div>
+  {% now 'l' as currentday %}
+  Today is {{ currentday }}
 </div>
 </body>
 </html>
